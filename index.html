@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nicole's Halloween Horror Fest 2026 🎃💀</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #09090b;
+      font-family: 'Inter', sans-serif;
+      color: #e4e4e7;
+    }
+    .creep-title {
+      font-family: 'Creepster', cursive;
+      text-shadow: 0 0 12px rgba(220, 38, 38, 0.8), 0 0 25px rgba(185, 28, 28, 0.6);
+    }
+    .blood-glow:hover {
+      box-shadow: 0 0 20px rgba(220, 38, 38, 0.4);
+      border-color: #ef4444;
+    }
+    /* Floating ghost animations */
+    @keyframes floatGhost {
+      0% { transform: translateY(0px) rotate(0deg); opacity: 0.15; }
+      50% { transform: translateY(-15px) rotate(3deg); opacity: 0.35; }
+      100% { transform: translateY(0px) rotate(0deg); opacity: 0.15; }
+    }
+    .animate-ghost {
+      animation: floatGhost 6s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="min-h-screen relative overflow-x-hidden pb-16">
+
+  <!-- Background Ambience -->
+  <div class="fixed inset-0 pointer-events-none z-0">
+    <div class="absolute top-10 left-10 text-6xl opacity-20 animate-ghost">👻</div>
+    <div class="absolute top-1/3 right-10 text-7xl opacity-15 animate-ghost" style="animation-delay: 2s;">🦇</div>
+    <div class="absolute bottom-20 left-1/4 text-6xl opacity-20 animate-ghost" style="animation-delay: 4s;">🕷️</div>
+  </div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-8">
+
+    <!-- Header Section -->
+    <header class="text-center my-8">
+      <div class="inline-flex items-center gap-2 mb-2">
+        <span class="text-3xl">🎃</span>
+        <span class="text-red-600 font-bold uppercase tracking-widest text-xs sm:text-sm">Nicole's Annual Tradition</span>
+        <span class="text-3xl">💀</span>
+      </div>
+      <h1 class="creep-title text-5xl sm:text-7xl text-red-600 tracking-wider mb-3">HALLOWEEN FEST '26</h1>
+      <p class="text-zinc-400 text-sm sm:text-base max-w-xl mx-auto">
+        31 Days of Horror • Modern Breakthroughs • Liminal Backroom Dread • Black-Led Classics
+      </p>
+    </header>
+
+    <!-- Interactive Progress Meter -->
+    <div class="bg-zinc-900/90 border border-zinc-800 rounded-xl p-4 mb-10 max-w-2xl mx-auto backdrop-blur-md shadow-xl">
+      <div class="flex justify-between items-center mb-2 text-xs sm:text-sm font-semibold">
+        <span class="text-zinc-300 flex items-center gap-2">🩸 Spooktober Progress</span>
+        <span id="progress-text" class="text-red-500 font-mono">0 / 31 Watched</span>
+      </div>
+      <div class="w-full bg-zinc-800 rounded-full h-3 overflow-hidden border border-zinc-700">
+        <div id="progress-bar" class="bg-gradient-to-r from-red-800 to-red-500 h-full w-0 transition-all duration-500"></div>
+      </div>
+    </div>
+
+    <!-- SECTION 1: October 2026 Visual Month Grid -->
+    <section class="mb-14">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-extrabold text-zinc-100 tracking-wide flex items-center gap-2">
+          <span>📅</span> October 2026 Calendar
+        </h2>
+        <span class="text-xs text-zinc-500 hidden sm:inline">Click any date to scroll to details</span>
+      </div>
+
+      <!-- Calendar Days of Week Header -->
+      <div class="grid grid-cols-7 gap-1 sm:gap-2 mb-2 text-center text-xs font-bold text-zinc-500 uppercase tracking-widest">
+        <div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div>
+      </div>
+
+      <!-- 31 Days Grid -->
+      <div id="calendar-grid" class="grid grid-cols-7 gap-1 sm:gap-2">
+        <!-- Javascript dynamically populates calendar tiles -->
+      </div>
+    </section>
+
+    <!-- SECTION 2: Filter Controls & Detailed Clickable List -->
+    <section>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 border-b border-zinc-800 pb-4">
+        <h2 class="text-2xl font-extrabold text-zinc-100 tracking-wide flex items-center gap-2">
+          <span>🎬</span> Detailed Watch List
+        </h2>
+        
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap gap-2 text-xs">
+          <button onclick="filterList('all')" id="btn-all" class="filter-btn active px-3 py-1.5 rounded-lg bg-red-600 text-white font-semibold">All (31)</button>
+          <button onclick="filterList('unwatched')" id="btn-unwatched" class="filter-btn px-3 py-1.5 rounded-lg bg-zinc-800 text-zinc-400 hover:text-zinc-200">Remaining</button>
+          <button onclick="filterList('liminal')" id="btn-liminal" class="filter-btn px-3 py-1.5 rounded-lg bg-zinc-800 text-zinc-400 hover:text-zinc-200">👁️ Liminal</button>
+          <button onclick="filterList('black-lead')" id="btn-black-lead" class="filter-btn px-3 py-1.5 rounded-lg bg-zinc-800 text-zinc-400 hover:text-zinc-200">🏿 Black Directors/Leads</button>
+        </div>
+      </div>
+
+      <!-- Film List -->
+      <div id="film-list" class="space-y-3">
+        <!-- Javascript renders daily entries here -->
+      </div>
+    </section>
+
+    <!-- SECTION 3: Special TV Bonus Spotlight -->
+    <section class="mt-12 bg-gradient-to-r from-red-950/40 via-zinc-900 to-zinc-900 border border-red-900/50 rounded-xl p-6 relative overflow-hidden">
+      <div class="absolute -right-6 -bottom-6 text-9xl opacity-10 pointer-events-none">🔪</div>
+      <div class="relative z-10">
+        <span class="bg-red-900/80 text-red-200 text-xs font-extrabold uppercase px-2.5 py-1 rounded-md border border-red-700">Special TV Series Bonus</span>
+        <h3 class="text-2xl font-bold text-zinc-100 mt-2 mb-1">Crystal Lake (Season 1)</h3>
+        <p class="text-sm text-zinc-300 max-w-2xl mb-3">
+          A24's new prequel series to the original 1980 <em>Friday the 13th</em>, starring Linda Cardellini as Pamela Voorhees. Premiering mid-October on Peacock—perfect to throw on alongside your mid-month movies!
+        </p>
+        <span class="inline-flex items-center gap-2 text-xs font-semibold text-red-400 bg-zinc-950 px-3 py-1.5 rounded-lg border border-zinc-800">
+          📺 Peacock Exclusive • Premieres Oct 15, 2026
+        </span>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    const movies = [
+      { day: "10/01", title: "The Shining (1980)", platform: "Max / Rent on Prime", desc: "Classic list anchor: ultimate hotel liminal dread and atmospheric perfection.", tags: ["classic", "liminal"] },
+      { day: "10/02", title: "Obsession (2026)", platform: "Prime Video / Rent on Apple TV", desc: "The $400M viral breakout psychological horror sensation directed by Curry Barker.", tags: ["new"] },
+      { day: "10/03", title: "His House (2020)", platform: "Netflix", desc: "Dir. Remi Weekes — labyrinthine domestic horror centered on South Sudanese refugees.", tags: ["black-lead", "liminal"] },
+      { day: "10/04", title: "Late Night with the Devil (2024)", platform: "Hulu / Shudder", desc: "A live 1970s late-night broadcast spiraling into live occult chaos.", tags: ["new"] },
+      { day: "10/05", title: "Midsommar (2019)", platform: "Max / Rent on Prime", desc: "Past list favorite: daylight cult rituals and surreal, sunny isolation.", tags: ["classic"] },
+      { day: "10/06", title: "Skinamarink (2022)", platform: "AMC+ / Shudder", desc: "Pure liminal space horror: endless hallways, missing doors, and unsettling childhood darkness.", tags: ["liminal"] },
+      { day: "10/07", title: "Backrooms (2026)", platform: "Max", desc: "Kane Parsons & A24's official feature film adaptation of the viral liminal space horror.", tags: ["new", "liminal"] },
+      { day: "10/08", title: "Us (2019)", platform: "Hulu / Peacock / Rent on Prime", desc: "Dir. Jordan Peele, starring Lupita Nyong'o — doppelgängers and subterranean tunnel networks.", tags: ["black-lead", "liminal"] },
+      { day: "10/09", title: "The Night House (2020)", platform: "Prime Video", desc: "Inverted architectural blueprints, empty corridors, and grief; returning 2023 staple.", tags: ["liminal"] },
+      { day: "10/10", title: "Pearl (2022)", platform: "Hulu / Rent on Prime", desc: "Technicolor slasher bliss.", tags: ["new"] },
+      { day: "10/11", title: "Vivarium (2019)", platform: "Prime Video / Tubi", desc: "Trapped in an infinite, identical suburban backroom labyrinth with no exit.", tags: ["liminal"] },
+      { day: "10/12", title: "Ganja & Hess (1973)", platform: "Shudder / Kanopy", desc: "Dir. Bill Gunn — sensual, atmospheric, and groundbreaking Black vampire horror.", tags: ["black-lead", "classic"] },
+      { day: "10/13", title: "The Thing (1982)", platform: "Peacock / Rent on Prime", desc: "Paranoia and creature effects in Antarctica; top re-watch staple.", tags: ["classic"] },
+      { day: "10/14", title: "Master (2022)", platform: "Prime Video", desc: "Dir. Mariama Diallo, starring Regina Hall — haunted campus halls and deep-seated dread.", tags: ["black-lead"] },
+      { day: "10/15", title: "1408 (2007)", platform: "MGM+ / Rent on Prime", desc: "A reality-bending hotel room that loops endlessly around its trapped guest.", tags: ["liminal"] },
+      { day: "10/16", title: "I Saw the TV Glow (2024)", platform: "Max / Rent on Prime", desc: "Surreal, late-night TV distortion and liminal 90s nostalgia.", tags: ["new", "liminal"] },
+      { day: "10/17", title: "Candyman (1992)", platform: "Rent on Prime / Apple TV", desc: "Starring Tony Todd — urban legend classic.", tags: ["black-lead", "classic"] },
+      { day: "10/18", title: "The Blackening (2022)", platform: "Hulu / Rent on Prime", desc: "Dir. Tim Story — sharp, hilarious cabin-in-the-woods horror-satire.", tags: ["black-lead"] },
+      { day: "10/19", title: "Weapons (2025/2026)", platform: "Max / Hulu / Rent on Prime", desc: "Dir. Zach Cregger — high-concept ensemble horror mystery.", tags: ["new"] },
+      { day: "10/20", title: "Eve’s Bayou (1997)", platform: "Paramount+ / Rent on Prime", desc: "Dir. Kasi Lemmons, starring Jurnee Smollett & Samuel L. Jackson — Southern gothic mystery.", tags: ["black-lead", "classic"] },
+      { day: "10/21", title: "Censor (2021)", platform: "Hulu / Rent on Prime", desc: "A video censor investigates a graphic VHS tape with ties to her past.", tags: ["liminal"] },
+      { day: "10/22", title: "As Above, So Below (2014)", platform: "Rent on Prime / Apple TV", desc: "Claustrophobic, disorienting journey into the looping subterranean Paris Catacombs.", tags: ["liminal"] },
+      { day: "10/23", title: "Barbarian (2022)", platform: "Max / Hulu", desc: "Rental home double-booking leading into hidden subterranean tunnels; returning 2023 favorite.", tags: ["liminal"] },
+      { day: "10/24", title: "Demon Knight: Tales from the Crypt (1995)", platform: "Rent on Prime / Apple TV", desc: "Starring Jada Pinkett Smith & Keith David — siege horror in a run-down boarding house.", tags: ["black-lead", "classic"] },
+      { day: "10/25", title: "The First Omen (2024)", platform: "Hulu", desc: "Surprisingly stylish prequel bringing genuine body horror and atmosphere.", tags: ["new"] },
+      { day: "10/26", title: "Scream (1996)", platform: "Paramount+ / Max", desc: "The ultimate meta-slasher re-watch.", tags: ["classic"] },
+      { day: "10/27", title: "Night of the Demon (1957)", platform: "Shudder / Rent on Prime", desc: "Classic gothic horror masterpiece full of atmospheric occult dread.", tags: ["classic"] },
+      { day: "10/28", title: "House on Haunted Hill (1999)", platform: "Rent on Prime / Apple TV", desc: "Starring Taye Diggs — morphing, living psychiatric hospital architecture.", tags: ["black-lead", "liminal"] },
+      { day: "10/29", title: "Swarm (2023 - Limited Series)", platform: "Prime Video", desc: "Co-created by Donald Glover, starring Dominique Fishback — dark, unhinged thriller.", tags: ["black-lead"] },
+      { day: "10/30", title: "Trick 'r Treat (2007)", platform: "Max / Rent on Prime", desc: "Essential Halloween anthology ritual.", tags: ["classic"] },
+      { day: "10/31", title: "Halloween (1978)", platform: "AMC+ / Shudder / Rent on Prime", desc: "The classic to close out the month.", tags: ["classic"] }
+    ];
+
+    let watchedState = JSON.parse(localStorage.getItem('halloween_watched_2026') || '{}');
+
+    function saveState() {
+      localStorage.setItem('halloween_watched_2026', JSON.stringify(watchedState));
+      updateProgress();
+    }
+
+    function toggleWatch(day) {
+      watchedState[day] = !watchedState[day];
+      saveState();
+      renderCalendar();
+      renderList(currentFilter);
+    }
+
+    function updateProgress() {
+      const count = Object.values(watchedState).filter(Boolean).length;
+      document.getElementById('progress-text').innerText = `${count} / 31 Watched`;
+      document.getElementById('progress-bar').style.width = `${(count / 31) * 100}%`;
+    }
+
+    function renderCalendar() {
+      const grid = document.getElementById('calendar-grid');
+      grid.innerHTML = movies.map(m => {
+        const isWatched = !!watchedState[m.day];
+        return `
+          <a href="#item-${m.day.replace('/', '')}" 
+             class="blood-glow p-2 rounded-lg bg-zinc-900 border ${isWatched ? 'border-red-900 bg-red-950/20' : 'border-zinc-800'} transition flex flex-col justify-between h-20 sm:h-24 group relative overflow-hidden">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-bold ${isWatched ? 'text-red-500 line-through' : 'text-zinc-400'}">${m.day}</span>
+              ${isWatched ? '<span class="text-xs">🩸</span>' : ''}
+            </div>
+            <p class="text-[10px] sm:text-xs font-semibold ${isWatched ? 'text-zinc-600 line-through' : 'text-zinc-200'} line-clamp-2 group-hover:text-red-400">
+              ${m.title}
+            </p>
+            <span class="text-[9px] text-zinc-500 truncate">${m.platform.split('/')[0]}</span>
+          </a>
+        `;
+      }).join('');
+    }
+
+    let currentFilter = 'all';
+
+    function filterList(filter) {
+      currentFilter = filter;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-red-600', 'text-white');
+        btn.classList.add('bg-zinc-800', 'text-zinc-400');
+      });
+      const activeBtn = document.getElementById(`btn-${filter}`);
+      if(activeBtn) {
+        activeBtn.classList.add('bg-red-600', 'text-white');
+        activeBtn.classList.remove('bg-zinc-800', 'text-zinc-400');
+      }
+      renderList(filter);
+    }
+
+    function renderList(filter = 'all') {
+      const list = document.getElementById('film-list');
+      const filtered = movies.filter(m => {
+        if (filter === 'unwatched') return !watchedState[m.day];
+        if (filter === 'liminal') return m.tags.includes('liminal');
+        if (filter === 'black-lead') return m.tags.includes('black-lead');
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        list.innerHTML = `<div class="text-center py-12 text-zinc-500">No movies found for this filter! 🎃</div>`;
+        return;
+      }
+
+      list.innerHTML = filtered.map(m => {
+        const isWatched = !!watchedState[m.day];
+        const elemId = `item-${m.day.replace('/', '')}`;
+        return `
+          <div id="${elemId}" class="p-4 rounded-xl bg-zinc-900/80 border ${isWatched ? 'border-red-950 opacity-60' : 'border-zinc-800'} flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition hover:border-zinc-700">
+            <div class="flex items-start gap-3.5">
+              <input type="checkbox" ${isWatched ? 'checked' : ''} onchange="toggleWatch('${m.day}')" 
+                     class="w-5 h-5 accent-red-600 rounded cursor-pointer mt-1 focus:ring-0">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-bold text-red-500 tracking-wider">${m.day}</span>
+                  ${m.tags.map(t => `<span class="text-[9px] uppercase px-1.5 py-0.5 rounded bg-zinc-800 text-zinc-400 border border-zinc-700">${t}</span>`).join('')}
+                </div>
+                <h3 class="text-lg font-bold text-zinc-100 ${isWatched ? 'line-through text-zinc-500' : ''}">${m.title}</h3>
+                <p class="text-xs sm:text-sm text-zinc-400 mt-0.5">${m.desc}</p>
+              </div>
+            </div>
+            <div class="self-start sm:self-center shrink-0">
+              <span class="inline-block px-3 py-1 text-xs font-semibold rounded-lg bg-zinc-950 text-zinc-300 border border-zinc-800">
+                📺 ${m.platform}
+              </span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Initial Setup
+    renderCalendar();
+    renderList();
+    updateProgress();
+  </script>
+</body>
+</html>
