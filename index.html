@@ -204,7 +204,7 @@
           <a href="#item-${m.day.replace('/', '')}" 
              class="blood-glow p-2 rounded-lg bg-zinc-900 border ${isWatched ? 'border-red-900 bg-red-950/20' : 'border-zinc-800'} transition flex flex-col justify-between h-20 sm:h-24 group relative overflow-hidden">
             <div class="flex justify-between items-center text-xs">
-              <span class="font-bold ${isWatched ? 'text-red-500 line-through' : 'text-zinc-400'}">${m.day}</span>
+              <span class="${isWatched ? 'text-red-800 line-through font-semibold' : 'text-red-500 font-extrabold'}">${m.day}</span>
               ${isWatched ? '<span class="text-xs">🩸</span>' : ''}
             </div>
             <p class="text-[10px] sm:text-xs font-semibold ${isWatched ? 'text-zinc-600 line-through' : 'text-zinc-200'} line-clamp-2 group-hover:text-red-400">
